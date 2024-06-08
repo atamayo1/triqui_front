@@ -65,6 +65,7 @@ triqui_front/
 │   ├── components/
 │   │   ├── Board.js
 │   │   ├── Square.js
+│   │   ├── index.js
 │   ├── App.js
 │   ├── index.js
 │   ├── styles.css
