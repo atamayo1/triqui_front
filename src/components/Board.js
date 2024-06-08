@@ -1,17 +1,33 @@
-import { useState } from "react";
 import { Square } from "./Square";
+import { calculateWinner } from "../shared";
 
-export function Board() {
-    const [squares, setSquares] = useState(Array(9).fill(null))
+export function Board({ xIsNext, squares, onPlay }) {
 
     function handleClick(i) {
+        if (squares[i] || calculateWinner(squares)) {
+            return;
+        }
         const nextSquares = squares.slice();
-        nextSquares[i] = 'X';
-        setSquares(nextSquares);
+        if (xIsNext) {
+            nextSquares[i] = 'X';
+        } else {
+            nextSquares[i] = 'O';
+        }
+        onPlay(nextSquares);
+    }
+
+    const winner = calculateWinner(squares);
+    let status;
+
+    if (winner) {
+        status = 'Ganador: ' + winner;
+    } else {
+        status = 'Siguiente jugador: ' + (xIsNext ? 'X' : 'O');
     }
 
     return (
         <>
+            <div className="status">{status}</div>
             <div className="board-row">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
                 <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
