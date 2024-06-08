@@ -23,8 +23,8 @@ Sigue estos pasos para configurar y ejecutar el proyecto localmente:
 1. **Clona este repositorio**:
 
     ```bash
-    git clone https://github.com/tu-usuario/triqui-react.git
-    cd triqui-react
+    git clone git@github.com:atamayo1/triqui_front.git
+    cd triqui_front
     ```
 
 2. **Instala las dependencias**:
@@ -58,7 +58,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto localmente:
 La estructura principal del proyecto es la siguiente:
 
 ```
-triqui-react/
+triqui_front/
 ├── public/
 │   ├── index.html
 ├── src/
