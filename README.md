@@ -64,8 +64,14 @@ triqui_front/
 ├── src/
 │   ├── components/
 │   │   ├── Board.js
+│   │   ├── Game.js
 │   │   ├── index.js
 │   │   ├── Square.js
+│   ├── shared/
+│   │   ├── utils
+│   │   |   ├── calculateWinner.js
+│   │   |   ├── index.js
+│   │   ├── index.js
 │   ├── App.js
 │   ├── index.js
 │   ├── styles.css
