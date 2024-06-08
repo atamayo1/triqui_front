@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Board } from "./Board";
+import { calculateWinner } from "../shared";
 
 export function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
