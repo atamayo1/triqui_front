@@ -10,10 +10,10 @@ export function Game() {
     const currentSquares = history[currentMove];
 
     function handleScore(squares) {
-        const winner = calculateWinner(squares);
-        if (winner) {
+        const winnerInfo = calculateWinner(squares);
+        if (winnerInfo) {
             const newScores = { ...scores };
-            newScores[winner]++;
+            newScores[winnerInfo.winner]++;
             setScores(newScores);
         }
     }
@@ -31,14 +31,18 @@ export function Game() {
 
     const moves = history.map((squares, move) => {
         let description;
-        if (move > 0) {
+        if (move > 0 && move !== currentMove) {
             description = 'Ir al movimiento #' + move;
+        } else if (move > 0 && move === currentMove) {
+            description = 'Estás en el movimiento #' + move;
         } else {
             description = 'Ir al inicio del juego';
         }
         return (
             <li key={move}>
-                <button onClick={() => jumpTo(move)}>{description}</button>
+                {
+                    move === currentMove ? <p onClick={() => jumpTo(move)}>{description}</p> : <button onClick={() => jumpTo(move)}>{description}</button>
+                }
             </li>
         );
     });
@@ -49,7 +53,7 @@ export function Game() {
         </div>
         <div className="game-info">
             <div className="score-board">
-                <div>Score X: {scores.X}</div>
+                <div>Score X: {scores.X}</div>{" "}
                 <div>Score O: {scores.O}</div>
             </div>
             <ol>{moves}</ol>

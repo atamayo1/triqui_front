@@ -16,7 +16,9 @@ export function Board({ xIsNext, squares, onPlay }) {
         onPlay(nextSquares);
     }
 
-    const winner = calculateWinner(squares);
+    const winnerInfo = calculateWinner(squares);
+    const winner = winnerInfo ? winnerInfo.winner : null;
+    const winningSquares = winnerInfo ? winnerInfo.line : [];
     let status;
 
     if (winner) {
@@ -30,7 +32,7 @@ export function Board({ xIsNext, squares, onPlay }) {
             key={i}
             value={squares[i]}
             onSquareClick={() => handleClick(i)}
-            squares={squares}
+            isWinningSquare={winningSquares.includes(i)}
         />
     );
 
