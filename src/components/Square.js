@@ -1,7 +1,7 @@
 import { calculateWinner } from "../shared";
 
-export function Square({ value, onSquareClick, squares }) {
-  return <button style={{color: value === calculateWinner(squares) && 'red'}} className="square" onClick={onSquareClick}>{value}</button>
+export function Square({ value, onSquareClick, isWinningSquare  }) {
+  return <button style={{ color: isWinningSquare ? 'red' : 'black' }} className="square" onClick={onSquareClick}>{value}</button>
 }
 
 
